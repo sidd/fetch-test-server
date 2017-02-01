@@ -48,12 +48,6 @@ TestServer.prototype.fetch = function fetch(path, opts) {
     var url = `${this.address}${path}`;
     var options = Object.assign({ headers: {} }, opts);
 
-    // automatic JSON encoding
-    if (typeof options.body === 'object') {
-      options.headers['Content-Type'] = 'application/json';
-      options.body = JSON.stringify(options.body);
-    }
-
     log(url, options);
 
     return nodeFetch(url, options);
